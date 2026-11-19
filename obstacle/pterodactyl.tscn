@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://rvxbd4gfdvjp"]
+
+[ext_resource type="Texture2D" uid="uid://ljbsfegsjcoa" path="res://assets/Pterodactyl/pterodactyl-1.png" id="1_s72wa"]
+[ext_resource type="Script" uid="uid://doj2376j4lras" path="res://obstacle/obstacle.gd" id="2_dp3m0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjtpm"]
+atlas = ExtResource("1_s72wa")
+region = Rect2(0, 0, 126, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v70up"]
+atlas = ExtResource("1_s72wa")
+region = Rect2(126, 0, 126, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osf4d"]
+atlas = ExtResource("1_s72wa")
+region = Rect2(252, 0, 126, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di8t1"]
+atlas = ExtResource("1_s72wa")
+region = Rect2(378, 0, 126, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qftay"]
+atlas = ExtResource("1_s72wa")
+region = Rect2(0, 0, 126, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhasf"]
+atlas = ExtResource("1_s72wa")
+region = Rect2(126, 0, 126, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlofi"]
+atlas = ExtResource("1_s72wa")
+region = Rect2(252, 0, 126, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fgva"]
+atlas = ExtResource("1_s72wa")
+region = Rect2(378, 0, 126, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh25x"]
+atlas = ExtResource("1_s72wa")
+region = Rect2(0, 113, 126, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dix31"]
+atlas = ExtResource("1_s72wa")
+region = Rect2(126, 113, 126, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3gpq"]
+atlas = ExtResource("1_s72wa")
+region = Rect2(252, 113, 126, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clrhf"]
+atlas = ExtResource("1_s72wa")
+region = Rect2(378, 113, 126, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc6mb"]
+atlas = ExtResource("1_s72wa")
+region = Rect2(0, 226, 126, 113)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u0f01"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjtpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v70up")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osf4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di8t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qftay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhasf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlofi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fgva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fh25x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dix31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3gpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clrhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc6mb")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s72wa"]
+size = Vector2(69, 49)
+
+[node name="Pterodactyl" type="Area2D" unique_id=212071016]
+script = ExtResource("2_dp3m0")
+y_offset = -86.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1071767661]
+sprite_frames = SubResource("SpriteFrames_u0f01")
+autoplay = "default"
+frame = 3
+frame_progress = 0.75571156
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=152511204]
+position = Vector2(-9.5, 29.5)
+shape = SubResource("RectangleShape2D_s72wa")
