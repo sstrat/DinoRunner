@@ -1,21 +1,23 @@
 [gd_scene format=4 uid="uid://b3kh8eqvu0pw5"]
 
-[ext_resource type="Script" uid="uid://dy2y322bu0wj" path="res://scenes/main.gd" id="1_trceg"]
-[ext_resource type="Texture2D" uid="uid://clf032w0uiby" path="res://assets/environment/sky-1.png" id="2_a8y0u"]
-[ext_resource type="Texture2D" uid="uid://c7uxwku0or5m2" path="res://assets/environment/sea-1.png" id="3_jkv2x"]
-[ext_resource type="Texture2D" uid="uid://dqxn3axtidua3" path="res://assets/environment/island-1.png" id="4_jbj1t"]
-[ext_resource type="Texture2D" uid="uid://c1stpi7xhbf4m" path="res://assets/environment/mountain-1.png" id="5_muem4"]
-[ext_resource type="Texture2D" uid="uid://b4bmeqjjm06oy" path="res://assets/environment/forest-1.png" id="6_dp3eg"]
-[ext_resource type="Texture2D" uid="uid://dqn4s67wac5he" path="res://assets/environment/tileset.png" id="7_0ld40"]
-[ext_resource type="Texture2D" uid="uid://troxsibx8py1" path="res://assets/environment/grass-1.png" id="8_gqmmt"]
-[ext_resource type="PackedScene" uid="uid://d0jk37e71bc3y" path="res://john/john.tscn" id="9_yc10j"]
-[ext_resource type="Script" uid="uid://jha6bxnm30mm" path="res://obstacles/obstacle_spawner.gd" id="10_jscy8"]
-[ext_resource type="PackedScene" uid="uid://rvxbd4gfdvjp" path="res://obstacles/instances/pterodactyl.tscn" id="11_pm3ni"]
-[ext_resource type="PackedScene" uid="uid://de1ku6ky3sdab" path="res://obstacles/instances/rock_round.tscn" id="12_y6deb"]
-[ext_resource type="PackedScene" uid="uid://caf3tynf1kflj" path="res://obstacles/instances/rock_spike.tscn" id="13_og1vs"]
+[ext_resource type="Script" uid="uid://dy2y322bu0wj" path="res://scenes/main_game/main.gd" id="1_fsiif"]
+[ext_resource type="Script" uid="uid://dxsail4yu1nux" path="res://scenes/main_game/components/time_label.gd" id="2_4tna4"]
+[ext_resource type="Script" uid="uid://py5wsdanuwcm" path="res://scenes/main_game/components/parallax_layer.gd" id="3_4tna4"]
+[ext_resource type="Texture2D" uid="uid://clf032w0uiby" path="res://assets/environment/sky-1.png" id="3_657ci"]
+[ext_resource type="Texture2D" uid="uid://c7uxwku0or5m2" path="res://assets/environment/sea-1.png" id="4_ip0mq"]
+[ext_resource type="Texture2D" uid="uid://dqxn3axtidua3" path="res://assets/environment/island-1.png" id="5_1xfs6"]
+[ext_resource type="Texture2D" uid="uid://c1stpi7xhbf4m" path="res://assets/environment/mountain-1.png" id="6_5dpwn"]
+[ext_resource type="Texture2D" uid="uid://b4bmeqjjm06oy" path="res://assets/environment/forest-1.png" id="7_ofw88"]
+[ext_resource type="Texture2D" uid="uid://dqn4s67wac5he" path="res://assets/environment/tileset.png" id="8_xg5l4"]
+[ext_resource type="Texture2D" uid="uid://troxsibx8py1" path="res://assets/environment/grass-1.png" id="9_5cxss"]
+[ext_resource type="PackedScene" uid="uid://d0jk37e71bc3y" path="res://john/john.tscn" id="10_5c3cp"]
+[ext_resource type="Script" uid="uid://jha6bxnm30mm" path="res://obstacles/obstacle_spawner.gd" id="11_hh8jm"]
+[ext_resource type="PackedScene" uid="uid://rvxbd4gfdvjp" path="res://obstacles/instances/pterodactyl.tscn" id="12_g06uj"]
+[ext_resource type="PackedScene" uid="uid://de1ku6ky3sdab" path="res://obstacles/instances/rock_round.tscn" id="13_qq24g"]
+[ext_resource type="PackedScene" uid="uid://caf3tynf1kflj" path="res://obstacles/instances/rock_spike.tscn" id="14_lp5od"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efxa6"]
-texture = ExtResource("7_0ld40")
+texture = ExtResource("8_xg5l4")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -1809,15 +1811,38 @@ size = Vector2(1280, 50)
 
 [node name="Main" type="Node2D" unique_id=992675969 node_paths=PackedStringArray("player")]
 process_mode = 3
-script = ExtResource("1_trceg")
+script = ExtResource("1_fsiif")
 player = NodePath("John")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=74240415]
 process_mode = 1
 position = Vector2(0, -200)
 
-[node name="Parallax_Layer" type="Node2D" parent="." unique_id=1841061297]
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D" unique_id=650087391]
+
+[node name="Time_Label" type="Label" parent="Camera2D/CanvasLayer" unique_id=1591507078]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+script = ExtResource("2_4tna4")
+
+[node name="Parallax_Layer" type="Node2D" parent="." unique_id=1841061297 node_paths=PackedStringArray("game_time", "sky_layer", "sea_layer", "island_layer", "mountains_layer", "forest_layer", "ground_layer", "gras_layer")]
 process_mode = 1
+script = ExtResource("3_4tna4")
+game_time = NodePath("../Camera2D/CanvasLayer/Time_Label")
+sky_layer = NodePath("Sky_Parallax2D")
+sea_layer = NodePath("Sea_Parallax2D")
+island_layer = NodePath("Islands_Parallax2D")
+mountains_layer = NodePath("Mountains_Parallax2D")
+forest_layer = NodePath("Forest_Parallax2D")
+ground_layer = NodePath("Ground_Parallax2D")
+gras_layer = NodePath("Grass_Parallax2D")
 
 [node name="Sky_Parallax2D" type="Parallax2D" parent="Parallax_Layer" unique_id=2078585567]
 repeat_size = Vector2(800, 0)
@@ -1825,7 +1850,7 @@ autoscroll = Vector2(-50, 0)
 repeat_times = 2
 
 [node name="Sky_Sprite2D" type="Sprite2D" parent="Parallax_Layer/Sky_Parallax2D" unique_id=259015355]
-texture = ExtResource("2_a8y0u")
+texture = ExtResource("3_657ci")
 offset = Vector2(1200, -300)
 
 [node name="Sea_Parallax2D" type="Parallax2D" parent="Parallax_Layer" unique_id=535099206]
@@ -1834,7 +1859,7 @@ autoscroll = Vector2(-75, 0)
 repeat_times = 2
 
 [node name="Sea_Sprite2D" type="Sprite2D" parent="Parallax_Layer/Sea_Parallax2D" unique_id=2093747707]
-texture = ExtResource("3_jkv2x")
+texture = ExtResource("4_ip0mq")
 offset = Vector2(1200, -225)
 
 [node name="Islands_Parallax2D" type="Parallax2D" parent="Parallax_Layer" unique_id=1537016896]
@@ -1843,7 +1868,7 @@ autoscroll = Vector2(-100, 0)
 repeat_times = 2
 
 [node name="Islands_Sprite2D" type="Sprite2D" parent="Parallax_Layer/Islands_Parallax2D" unique_id=372900917]
-texture = ExtResource("4_jbj1t")
+texture = ExtResource("5_1xfs6")
 offset = Vector2(1200, -325)
 
 [node name="Mountains_Parallax2D" type="Parallax2D" parent="Parallax_Layer" unique_id=408728934]
@@ -1852,7 +1877,7 @@ autoscroll = Vector2(-150, 0)
 repeat_times = 2
 
 [node name="Mountains_Sprite2D" type="Sprite2D" parent="Parallax_Layer/Mountains_Parallax2D" unique_id=471748412]
-texture = ExtResource("5_muem4")
+texture = ExtResource("6_5dpwn")
 offset = Vector2(1200, -150)
 
 [node name="Forest_Parallax2D" type="Parallax2D" parent="Parallax_Layer" unique_id=494215983]
@@ -1861,7 +1886,7 @@ autoscroll = Vector2(-200, 0)
 repeat_times = 2
 
 [node name="Forest_Sprite2D" type="Sprite2D" parent="Parallax_Layer/Forest_Parallax2D" unique_id=1922250170]
-texture = ExtResource("6_dp3eg")
+texture = ExtResource("7_ofw88")
 offset = Vector2(1200, -115)
 
 [node name="Ground_Parallax2D" type="Parallax2D" parent="Parallax_Layer" unique_id=1109891298]
@@ -1880,7 +1905,7 @@ autoscroll = Vector2(-350, 0)
 repeat_times = 2
 
 [node name="Grass_Sprite2D" type="Sprite2D" parent="Parallax_Layer/Grass_Parallax2D" unique_id=1706502051]
-texture = ExtResource("8_gqmmt")
+texture = ExtResource("9_5cxss")
 offset = Vector2(1200, 175)
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=335111559]
@@ -1890,21 +1915,22 @@ process_mode = 1
 position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_u0f01")
 
-[node name="John" parent="." unique_id=1758018898 instance=ExtResource("9_yc10j")]
+[node name="John" parent="." unique_id=1758018898 instance=ExtResource("10_5c3cp")]
 process_mode = 1
 z_index = 4096
 position = Vector2(-122, -29)
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1381080990 node_paths=PackedStringArray("spawn_timer", "obstacle_container")]
+[node name="ObstacleSpawner_Marker2D" type="Marker2D" parent="." unique_id=1381080990 node_paths=PackedStringArray("game_time", "spawn_timer", "obstacle_container")]
 process_mode = 1
 position = Vector2(750, 0)
-script = ExtResource("10_jscy8")
+script = ExtResource("11_hh8jm")
+game_time = NodePath("../Camera2D/CanvasLayer/Time_Label")
 spawn_timer = NodePath("SpawnTimer")
-obstacle_scenes = Array[PackedScene]([ExtResource("11_pm3ni"), ExtResource("12_y6deb"), ExtResource("13_og1vs")])
+obstacle_scenes = Array[PackedScene]([ExtResource("12_g06uj"), ExtResource("13_qq24g"), ExtResource("14_lp5od")])
 obstacle_container = NodePath("ObstacleContainer")
 
-[node name="SpawnTimer" type="Timer" parent="Marker2D" unique_id=1487266752]
+[node name="SpawnTimer" type="Timer" parent="ObstacleSpawner_Marker2D" unique_id=1487266752]
 one_shot = true
 autostart = true
 
-[node name="ObstacleContainer" type="Node2D" parent="Marker2D" unique_id=906446492]
+[node name="ObstacleContainer" type="Node2D" parent="ObstacleSpawner_Marker2D" unique_id=906446492]

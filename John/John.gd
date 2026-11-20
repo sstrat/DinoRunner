@@ -20,15 +20,16 @@ var jumps_used: int = 0
 var rolling := false
 var hurting := false
 var dying := false
+var is_dead := false
 
 
 func _ready() -> void:
 	assert(animation != null, "No AnimatedSprite2D connected!")
 	assert(default_collision != null, "No default collision connected!")
 	assert(roll_collision != null, "No roll collision connected!")
-
+	
 	animation.animation_finished.connect(_on_animation_finished)
-
+	
 	end_roll()
 	animation.play("run")
 
@@ -36,6 +37,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		jumps_used = 0
+		if is_dead:
+			dead.emit()
 	else:
 		velocity += get_gravity() * delta
 	
@@ -70,7 +73,7 @@ func update_animation() -> void:
 func start_roll() -> void:
 	if rolling or hurting or dying:
 		return
-
+	
 	default_collision.set_deferred("disabled", true)
 	roll_collision.set_deferred("disabled", false)
 	rolling = true
@@ -105,4 +108,4 @@ func _on_animation_finished() -> void:
 		"hurt":
 			hurting = false
 		"die":
-			dead.emit()
+			is_dead = true

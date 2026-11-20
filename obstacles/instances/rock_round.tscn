@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0f01"]
 radius = 30.0
 
-[node name="Rock1" type="Area2D" unique_id=594982718]
+[node name="RockRound" type="Area2D" unique_id=594982718]
 script = ExtResource("1_ifxu4")
 x_speed = 500.0
 y_offset = -31.0
