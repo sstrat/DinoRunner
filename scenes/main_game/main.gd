@@ -19,6 +19,9 @@ func _register_the_player_death():
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("quit"):
+		get_tree().quit(0)
+	
 	if not is_player_dead:
 		return
 	
