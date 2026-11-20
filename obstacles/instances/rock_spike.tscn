@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://caf3tynf1kflj"]
+
+[ext_resource type="Script" uid="uid://doj2376j4lras" path="res://obstacles/components/obstacle.gd" id="1_67ffj"]
+[ext_resource type="Texture2D" uid="uid://dqn4s67wac5he" path="res://assets/environment/tileset.png" id="2_4qx16"]
+
+[node name="Rock1" type="Area2D" unique_id=594982718]
+script = ExtResource("1_67ffj")
+x_speed = 300.0
+y_offset = -36.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=858782641]
+position = Vector2(-6, 5)
+texture = ExtResource("2_4qx16")
+region_enabled = true
+region_rect = Rect2(768.2998, 145.4132, 64.94385, 64.24187)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=487848364]
+position = Vector2(-6, 5)
+polygon = PackedVector2Array(13.528076, -22.120934, -1.4719238, -10.120934, -13.471924, 11.879066, -13.471924, 13.879066, -31.471924, 26.879066, -32.471924, 31.879066, 31.528076, 31.879066, 27.528076, -11.120934, 27.528076, -16.120934, 22.528076, -21.120934)

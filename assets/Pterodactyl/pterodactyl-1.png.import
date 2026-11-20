@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ljbsfegsjcoa"
-path="res://.godot/imported/pterodactyl-1.png-4bb86b2a3f0cdce51d5fa6ccf3dc85c7.ctex"
+path="res://.godot/imported/pterodactyl-1.png-19c444d1ae81e4949ff34c6c836849a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Pterodactyl/pterodactyl-1.png"
-dest_files=["res://.godot/imported/pterodactyl-1.png-4bb86b2a3f0cdce51d5fa6ccf3dc85c7.ctex"]
+source_file="res://assets/pterodactyl/pterodactyl-1.png"
+dest_files=["res://.godot/imported/pterodactyl-1.png-19c444d1ae81e4949ff34c6c836849a4.ctex"]
 
 [params]
 

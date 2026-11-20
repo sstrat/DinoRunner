@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc7bq4mtjqf40"
-path="res://.godot/imported/caverman.png-56120388cc792c91cff5e41a38f081c9.ctex"
+uid="uid://c7uxwku0or5m2"
+path="res://.godot/imported/sea-1.png-62ecda9ffe51cb212672d453c468fd36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CavemanPrime/caverman.png"
-dest_files=["res://.godot/imported/caverman.png-56120388cc792c91cff5e41a38f081c9.ctex"]
+source_file="res://assets/environment/sea-1.png"
+dest_files=["res://.godot/imported/sea-1.png-62ecda9ffe51cb212672d453c468fd36.ctex"]
 
 [params]
 
